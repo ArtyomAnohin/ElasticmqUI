@@ -1,0 +1,21 @@
+<div id="purgeQueue" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form action="/queue/purge" method="POST">
+                <div class="modal-body">
+                    Are you shure to delete <font color="red"><strong>ALL</strong></font> messages
+                    <input type="hidden" name="queue_name" value="{{ name }}"/>
+                </div>
+
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success" value="Ok"/>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>

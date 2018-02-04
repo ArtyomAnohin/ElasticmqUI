@@ -1,0 +1,30 @@
+<!-- Modal -->
+<div id="addMessage" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add message</h4>
+            </div>
+
+
+            <form action="/message/add" method="POST">
+                <div class="modal-body">
+
+                    <textarea class="form-control" rows="15" name="message_body"></textarea>
+                    <input type="hidden" name="queue_name" value="{{ name }}"/>
+                </div>
+
+                <div class="modal-footer">
+                    <input type="submit" class="btn btn-success" value="Add"/>
+
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>

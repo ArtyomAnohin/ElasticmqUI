@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% include "addmessage.html" %}
+{% include "purge.html" %}
+{% block injbtn %}
+
+<li><a href="#" data-toggle="modal" data-target="#addMessage">Add Message</a></li>
+<li><a href="#" data-toggle="modal" data-target="#purgeQueue">Purge</a></li>
+{% endblock %}
+
+{% block content %}
+
+
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );
+
+
+</script>
+<div class="container">
+
+
+    <div class="row w-25">
+        <ul class="nav nav-pills nav-stacked">
+            <div class="col-md-4 text-center">
+                <li class="active">
+                    <span class="badge">{{ current_queue.attributes['ApproximateNumberOfMessages'] }}</span>
+                    Messages
+                </li>
+            </div>
+            <div class="col-md-4 text-center">
+                <li>
+                    <span class="badge-red">{{ current_queue.attributes['ApproximateNumberOfMessagesNotVisible'] }}</span>
+                    In Fly
+                </li>
+            </div>
+            <div class="col-md-4 text-center">
+                <a href=""><img src="/static/img/reload.png" width="20px" height="20px"></a>
+            </div>
+        </ul>
+    </div>
+    <br>
+    <br>
+
+    <table id="example" class="table table-hover" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Body</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for n in message_list %}
+        <tr>
+            <form action="/message/delete" method="POST">
+            <th scope="row" width="50px">
+                {{ loop.index }}
+            </th>
+            <td>
+                {{ n.body }}
+            </td>
+            <th width="50px">
+
+                    <input class="invisible" type="hidden" name="message_id" value="{{ n.receiptHandle }}"/>
+                    <input class="invisible" type="hidden" name="queue_name" value="{{ name }}"/>
+                    <input type="image" src='/static/img/close-circle.png' width="20px" height="20px"/>
+
+            </th>
+                </form>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}
