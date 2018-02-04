@@ -1,19 +1,30 @@
 import boto3
 import time
 
+import configparser
+
+config = configparser.ConfigParser()
+config.sections()
+config.read('./config/config.ini')
+elastic = config['elasticmq']
+
+params = {'endpoint_url': elastic['host'] + ':' + elastic['port'],
+          'region_name': 'elasticmq',
+          'aws_secret_access_key': elastic['aws_secret_access_key'],
+          'aws_access_key_id': elastic['aws_access_key_id']}
+
 client = boto3.resource('sqs',
-                        endpoint_url='http://localhost:9324',
-                        region_name='elasticmq',
-                        aws_secret_access_key='x',
-                        aws_access_key_id='x',
+                        endpoint_url=params['endpoint_url'],
+                        region_name=params['region_name'],
+                        aws_secret_access_key=params['aws_secret_access_key'],
+                        aws_access_key_id=params['aws_access_key_id'],
                         use_ssl=False)
 sqs = boto3.client('sqs',
-                   endpoint_url='http://localhost:9324',
-                   region_name='elasticmq',
-                   aws_secret_access_key='x',
-                   aws_access_key_id='x',
+                   endpoint_url=params['endpoint_url'],
+                   region_name=params['region_name'],
+                   aws_secret_access_key=params['aws_secret_access_key'],
+                   aws_access_key_id=params['aws_access_key_id'],
                    use_ssl=False)
-
 
 class Queu:
     def __init__(self, name, url, numMes, invisMes, tst):
