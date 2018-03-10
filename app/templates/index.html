@@ -1,7 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+
 <div class="container">
+    {% if error %}
+<div class="alert alert-danger" role="alert">
+  <strong>Error!</strong> {{ error }}
+</div>
+{% endif %}
     <table class="table table-hover">
         <thead>
         <tr>

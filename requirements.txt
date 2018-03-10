@@ -1,3 +1,6 @@
 Flask
 configparser
 boto3
+pytest
+pytest-cov
+pytest-flask

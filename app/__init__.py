@@ -10,7 +10,8 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template("index.html", queue_list=cleint_get_queues())
+    queue_list, error = cleint_get_queues()
+    return render_template("index.html", queue_list=queue_list,error=error)
 
 
 @app.route('/queue/<name>', methods=['POST', 'GET'])

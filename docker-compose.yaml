@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+     - "5000:5000"
+    volumes:
+     - ./config:/application/config
+    links:
+     - queue
+    environment:
+     - DATADOG_HOST=datadog
+  queue:
+      image: s12v/elasticmq
+      volumes:
+        - ./custom_queue.conf:/etc/elasticmq/elasticmq.conf
+      ports:
+        - "9324:9324"
