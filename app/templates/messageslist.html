@@ -55,11 +55,9 @@
                     {{ n.body }}
                 </td>
                 <th width="50px">
-
                     <input class="invisible" type="hidden" name="message_id" value="{{ n.receiptHandle }}"/>
                     <input class="invisible" type="hidden" name="queue_name" value="{{ name }}"/>
-                    <input type="image" src='/static/img/close-circle.png' width="20px" height="20px"/>
-
+                    <input class="delete" type="image" src='/static/img/close-circle.png' width="20px" height="20px"/>
                 </th>
             </form>
         </tr>
