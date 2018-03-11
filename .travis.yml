@@ -1,16 +1,27 @@
 language: python
-notifications:
-  email: false
-sudo: false
-python:
-  - 2.7
-  - 3.6
+
+env:
+  - DOCKER_COMPOSE_VERSION=1.4.2
+
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
 
 install:
-  - pip install -r requirements.txt
-  - codecov
+  - pip install pytest pytest-cov pytest-flask coverage
+  - pip install codecov
+
+before_script:
+  - docker-compose up --build -d
+
 script:
   - py.test --cov=app
+
 after_success:
   - coverage xml
   - codecov  -t 9ae23f35-0e87-4fb2-ab0f-8150398bb408
+
+after_script:
+  - docker-compose down
