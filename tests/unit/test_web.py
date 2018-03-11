@@ -31,18 +31,17 @@ def test_delete_message(client):
         'message_body': MESSAGE
     })
     assert response.status_code == 302
-    time.sleep(1)
+    time.sleep(2)
     response = client.get(url_for('.queue', name=QUEUE_NAME))
     assert response.status_code == 200
     soup = BeautifulSoup(response.data, 'html.parser')
     message_id = soup.find("input", {"name": "message_id"}).attrs['value']
-    time.sleep(1)
+    time.sleep(5)
     response = client.post(url_for('.delete_message'), data={
         'queue_name': QUEUE_NAME,
         'message_id': message_id
     })
-    assert response.status_code == 302
-    time.sleep(1)
+    time.sleep(2)
     response = client.get(url_for('.queue', name=QUEUE_NAME))
     assert MESSAGE not in str(response.data)
 
@@ -90,3 +89,6 @@ def test_404_page(client):
     response = client.get(url_for('.purge_queue'))
     assert response.status_code == 200
     assert 'I think you broke something ...' in str(response.data)
+    response = client.get(url_for('.index')+'123')
+    assert response.status_code == 404
+    assert '404 Not Found' in str(response.data)
