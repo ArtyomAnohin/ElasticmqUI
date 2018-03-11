@@ -3,12 +3,16 @@ version: '2'
 services:
   web:
     image: artyom/elasticui
+    container_name: elasticui
+    depends_on:
+      - "queue"
     ports:
         - "5000:5000"
     volumes:
       - ./custom_queue.conf:/application/config/custom_queue.conf
   queue:
     image: s12v/elasticmq
+    container_name: elasticmq
     volumes:
       - ./custom_queue.conf:/etc/elasticmq/elasticmq.conf
     ports:
