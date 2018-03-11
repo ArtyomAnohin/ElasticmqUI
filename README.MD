@@ -1,7 +1,7 @@
 # Web client for manage ElasticMQ
 
 ### Getting started
-[![Requirements Status](https://requires.io/github/ArtyomAnohin/ElasticmqUI/requirements.svg?branch=feature%2Fadd_error_alert)](https://requires.io/github/ArtyomAnohin/ElasticmqUI/requirements/?branch=feature%2Fadd_error_alert)
+[![Requirements Status](https://requires.io/github/ArtyomAnohin/ElasticmqUI/requirements.svg?branch=master)](https://requires.io/github/ArtyomAnohin/ElasticmqUI/requirements/?branch=master)
 [![Build Status](https://travis-ci.org/ArtyomAnohin/ElasticmqUI.svg?branch=master)](https://travis-ci.org/ArtyomAnohin/ElasticmqUI)
 
 Install docker and run:
