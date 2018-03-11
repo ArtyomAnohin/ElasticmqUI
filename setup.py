@@ -57,7 +57,6 @@ if pkg_resources:
 setup(
     name='tox-travis',
     description='Seamless integration of Tox into Travis CI',
-    long_description=io.open('README.rst', encoding='utf-8').read(),
     author='Ryan Hiebert',
     author_email='ryan@ryanhiebert.com',
     url='https://github.com/tox-dev/tox-travis',
