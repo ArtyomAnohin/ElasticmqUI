@@ -1,16 +1,27 @@
 language: python
-notifications:
-  email: false
-sudo: false
-python:
-  - 2.7
-  - 3.6
+sudo: required
+services:
+  - docker
+env:
+  - DOCKER_COMPOSE_VERSION=1.4.2
+
+before_install:
+  - docker build -t artyom/elasticui .
 
 install:
   - pip install -r requirements.txt
-  - codecov
+  - pip install pytest pytest-cov pytest-flask coverage
+  - pip install codecov
+
+before_script:
+  - docker-compose -f docker-compose-ci.yaml up -d --force-recreate
+
 script:
   - py.test --cov=app
+
 after_success:
   - coverage xml
-  - codecov  -t 9ae23f35-0e87-4fb2-ab0f-8150398bb408
+  - codecov
+
+after_script:
+  - docker-compose down
