@@ -1,7 +1,11 @@
-Flask
-configparser
-boto3
+Flask==0.12.2
+configparser==3.5.0
+boto3==1.6.6
+botocore==1.9.6
 pytest==3.4.2
 pytest-cov==2.5.1
 pytest-flask==0.10.0
-requests
+coverage==4.5.1
+docutils==0.14
+py==1.5.2
+requests==2.18.4
