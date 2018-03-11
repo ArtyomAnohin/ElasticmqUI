@@ -26,7 +26,7 @@ sqs = boto3.client('sqs',
                    aws_access_key_id=params['aws_access_key_id'],
                    use_ssl=False)
 
-class Queu:
+class Queue:
     def __init__(self, name, url, numMes, invisMes, tst):
         self.name = url.rsplit('/', 1)[-1]
         self.url = url
@@ -43,12 +43,22 @@ class Message:
 
 def cleint_get_queues():
     urls = []
-    for queue in client.queues.all():
-        urls.append(Queu('XXX', queue.url,
-                         queue.attributes.get('ApproximateNumberOfMessages'),
-                         queue.attributes.get('ApproximateNumberOfMessagesNotVisible'),
-                         queue.attributes.get('CreatedTimestamp')))
-    return urls
+    error = None
+    try:
+        for queue in client.queues.all():
+            urls.append(Queue('XXX', queue.url,
+                              queue.attributes.get('ApproximateNumberOfMessages'),
+                              queue.attributes.get('ApproximateNumberOfMessagesNotVisible'),
+                              queue.attributes.get('CreatedTimestamp')))
+
+        def getKey(custom):
+            return custom.name
+        urls = sorted(urls, key=getKey)
+    except Exception:
+        error = "Cannot connect to "+ params['endpoint_url']
+        return urls, error
+    finally:
+        return urls, error
 
 
 def client_get_queu_by_name(name):
