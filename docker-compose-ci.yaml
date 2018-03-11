@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  web:
+    image: artyom/elasticui
+    ports:
+        - "5000:5000"
+    volumes:
+      - ./custom_queue.conf:/application/config/custom_queue.conf
+  queue:
+    image: s12v/elasticmq
+    volumes:
+      - ./custom_queue.conf:/etc/elasticmq/elasticmq.conf
+    ports:
+      - "9324:9324"

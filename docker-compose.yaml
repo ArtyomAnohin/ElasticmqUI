@@ -8,11 +8,9 @@ services:
     ports:
      - "5000:5000"
     volumes:
-     - ./config:/application/config
+     - ./custom_queue.conf:/application/config/custom_queue.conf
     links:
      - queue
-    environment:
-     - DATADOG_HOST=datadog
   queue:
       image: s12v/elasticmq
       volumes:

@@ -4,7 +4,7 @@ RUN apt-get install -y python3-pip python3-dev build-essential
 EXPOSE 8080
 
 COPY . /application
-ADD ./config /application
+ADD ./ /application
 VOLUME ["/application/config"]
 
 WORKDIR /application
