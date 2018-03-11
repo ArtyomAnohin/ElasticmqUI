@@ -9,6 +9,7 @@ before_install:
   - docker build -t artyom/elasticui .
 
 install:
+  - pip install -r requirements.txt
   - pip install pytest pytest-cov pytest-flask coverage
   - pip install codecov
 

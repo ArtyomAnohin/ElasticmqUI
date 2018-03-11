@@ -14,3 +14,4 @@ def test_app(client):
     response = client.get(url_for('.index'))
     assert response.status_code == 200
     assert 'noAWS' in str(response.data)
+    assert 'Error! Cannot connect to' not in str(response.data)
