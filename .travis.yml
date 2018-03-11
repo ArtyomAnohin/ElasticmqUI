@@ -9,7 +9,7 @@ matrix:
 install:
   - pip install wheel codecov coverage
   - pip install -r requirements.txt
-  - pip install pip install tox tox-travis
+  - pip install tox tox-travis
 
 script: tox
 after_success: coverage combine && codecov
