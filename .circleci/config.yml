@@ -39,8 +39,7 @@ jobs:
             - ./venv
           key: v1-dependencies-{{ checksum "requirements.txt" }}
         
-    test:
-      override:
-        - py.test tests
-            parallel: true
-          
+      - run:
+          name: install dependencies
+          command: |
+            py.test --cov=app
