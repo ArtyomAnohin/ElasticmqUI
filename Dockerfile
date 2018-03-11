@@ -1,6 +1,5 @@
-FROM       ubuntu:latest
-RUN apt-get update -y
-RUN apt-get install -y python3-pip python3-dev build-essential
+FROM python:3
+
 EXPOSE 8080
 
 COPY . /application
