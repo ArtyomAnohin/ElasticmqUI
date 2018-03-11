@@ -1,7 +1,12 @@
 Flask
 configparser
 boto3
+botocore
 pytest
 pytest-cov
 pytest-flask
+coverage
+docutils
+py
 requests
+codecov
