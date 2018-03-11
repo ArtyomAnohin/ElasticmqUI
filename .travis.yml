@@ -10,6 +10,8 @@ install:
   - pip install wheel codecov coverage
   - pip install -r requirements.txt
   - pip install tox tox-travis
+  - python setup.py bdist_wheel
+  - pip install ./dist/tox_travis-*.whl
 
-script: tox
+script: tox --installpkg ./dist/tox_travis-*.whl
 after_success: coverage combine && codecov
