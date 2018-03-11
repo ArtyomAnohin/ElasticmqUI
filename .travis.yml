@@ -23,6 +23,6 @@ install:
   - pip install -r requirements.txt
   - python setup.py install
 script:
-  - py.test ./tests/unit/test_web.py --cov=app
+  - py.test --cov=app
 after_success:
   - codecov
