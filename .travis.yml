@@ -9,4 +9,4 @@ install:
   - pip install -r requirements.txt
 
 script:
-  - pytest --cov=app/
+  - py.test --cov-report term-missing --cov app -v
