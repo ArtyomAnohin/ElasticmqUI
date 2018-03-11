@@ -11,7 +11,6 @@ install:
   - pip install -r requirements.txt
   - pip install tox tox-travis
   - python setup.py bdist_wheel
-  - pip install ./dist/tox_travis-*.whl
 
-script: tox --installpkg ./dist/tox_travis-*.whl
+script: tox
 after_success: coverage combine && codecov
