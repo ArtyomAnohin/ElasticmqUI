@@ -1,6 +1,0 @@
-[testenv]
-setenv =
-    PYTHONPATH = {toxinidir}
-commands =
-    pytest --cov=app
-    - codecov
