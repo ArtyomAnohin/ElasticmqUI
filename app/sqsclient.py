@@ -1,11 +1,11 @@
-import boto3
+import configparser
 import time
 
-import configparser
+import boto3
 
 config = configparser.ConfigParser()
 config.sections()
-config.read('./config/config.ini')
+config.read('./config.ini')
 elastic = config['elasticmq']
 
 params = {'endpoint_url': elastic['host'] + ':' + elastic['port'],
