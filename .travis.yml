@@ -4,20 +4,7 @@ notifications:
 sudo: false
 python:
   - 2.7
-
-matrix:
-  include:
-    - python: 2.7
-      dist: trusty
-      sudo: required
-      virtualenv:
-        system_site_packages: true
-      addons:
-        apt:
-          packages:
-            - python-requests
-            - python-coverage
-            - python-mock
+  - 3.6
 
 install:
   - pip install -r requirements.txt
