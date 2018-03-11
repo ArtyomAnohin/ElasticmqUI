@@ -62,8 +62,8 @@ setup(
     url='https://github.com/tox-dev/tox-travis',
     license='MIT',
     version='0.10',
-    package_dir={'': 'src'},
-    packages=find_packages('src'),
+    package_dir={'': 'app'},
+    packages=find_packages('app'),
     entry_points={
         'tox': ['travis = tox_travis.hooks'],
     },
