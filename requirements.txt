@@ -4,3 +4,4 @@ boto3
 pytest
 pytest-cov
 pytest-flask
+requests
