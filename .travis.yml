@@ -1,9 +1,16 @@
 language: python
+notifications:
+  email: false
+sudo: false
 python:
-
-  - "3.6"
+  - 2.7
+  - 3.6
 
 install:
   - pip install -r requirements.txt
-
-script: pytest
+  - codecov
+script:
+  - py.test --cov=app
+after_success:
+  - coverage xml
+  - codecov  -t 9ae23f35-0e87-4fb2-ab0f-8150398bb408
