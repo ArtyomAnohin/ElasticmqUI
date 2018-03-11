@@ -1,8 +1,7 @@
 language: python
-cache:
-  directories:
-    - "${HOME}/virtualenv"
-    - "${TRAVIS_BUILD_DIR}/.tox"
+
+virtualenv:
+  system_site_packages: true
 
 python:
   - "3.5"
@@ -10,9 +9,6 @@ python:
 
 install:
   - pip install -r requirements.txt
-  - pip install tox
 
 script:
-  - tox
-  - "find ${TRAVIS_BUILD_DIR}/.tox -name log -o -name __pycache__ -type d | xargs -I {} rm -rf {}"
   - pytest --cov=app/
