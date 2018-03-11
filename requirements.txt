@@ -10,3 +10,4 @@ docutils
 py
 requests
 codecov
+BeautifulSoup4
