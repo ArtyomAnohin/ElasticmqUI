@@ -9,7 +9,7 @@ services:
     ports:
         - "5000:5000"
     volumes:
-      - ./custom_queue.conf:/application/config/custom_queue.conf
+      - ./config.ini:/application/config.ini
   queue:
     image: s12v/elasticmq
     container_name: elasticmq
